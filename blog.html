@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photos</title>
-    <header class="top-bar">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+  <header class="top-bar">
      <span><h2><a href="index.html">Kynlee Walker</a></h2></span>
      <span><h3><a href="works.html">Works</a></h3></span>
      <span><h3><a href="blog.html">Photos</a></h3></span>
      <span><h3><a href="about.html">About/CV</a></h3></span>
-     
-</header>
-</head>
-<body>
+  </header>
 
     <div class="gallery3">
   <div>
@@ -42,6 +42,7 @@ data-slides="Photos/otherone.jpg, Photos/othertwo.jpg, Photos/otherthree.jpg, Ph
 Photos/otherfive.jpg, Photos/othersix.jpg, Photos/otherseven.jpg,
 Photos/othernine.jpg">
 <p class="group-caption">Misc.</p>
+</div>
 </div>
 
 <dialog id="photo-lightbox">
@@ -126,8 +127,6 @@ Photos/othernine.jpg">
     if (e.target === lightbox) lightbox.close();
   });
 </script>
-
-<link rel="stylesheet" href="stylesheet.css">
 
 </body>
 </html>

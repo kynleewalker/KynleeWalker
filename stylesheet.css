@@ -1,17 +1,14 @@
 html{
    background-image: url(images/website_background.jpg);
-   background-size: 100%;
+   background-size: cover;
    background-attachment: fixed;
 }
 
 .grid-container {
 display: grid;
-grid-template-columns: (3, 1fr);
+grid-template-columns: repeat(3, 1fr);
 gap: 16px;
-height: 750px;
 row-gap: 40px;  
-grid-template-areas:
-"1 2 3";
 background-color: blue;
 }
 
@@ -58,15 +55,6 @@ a{
 }
 a:hover {
   color: rgb(255, 67, 136);
-}
-
-.gallery2 {
-display: grid;
-gap: 2.5rem;
-padding: 1rem 3rem;
-grid-template-columns: repeat(6, 1fr);
-grid-auto-rows: minmax(5em, auto);
-align-items:start;
 }
 
 .gallery2 div:nth-child(1) { grid-column: 1/4; grid-row: 2; }
@@ -124,13 +112,24 @@ align-items:start;
 
 .gallery2 img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
   display: block;
   cursor: zoom-in;
   transition: transform 0.2s ease;
+  box-sizing: border-box;
   border: 12px solid #ffffff;
 }
+
+.gallery2 {
+display: grid;
+gap: 2.5rem;
+padding: 1rem 3rem;
+grid-template-columns: repeat(6, 1fr);
+grid-auto-rows: minmax(5em, auto);
+align-items:start;
+}
+
 
 .gallery2 img,
 .gallery2 video {
@@ -252,7 +251,9 @@ outline: none;
   width: 100%;
 }
 .photo-link img {
-  width: 300px; /* Adjust as needed */
+  width: 100%;
+  max-width: 300px;
+  height: auto;
   transition: filter 0.3s ease;
 }
   .photo-link:hover img {
@@ -306,8 +307,10 @@ outline: none;
 
 p.small {
   line-height: 1.5;
-   width: 300px;
+    width: 100%;
+   max-width: 300px;
    padding-left: 50px;
+   box-sizing: border-box;
 }
 
 .split-section {
@@ -343,8 +346,10 @@ p.small {
 
 p.smaller {
   line-height: 1.5;
-   width: 300px;
+   width: 100%;
+   max-width: 300px;
    padding-left: 50px;
+   box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -362,4 +367,292 @@ h4{
   color: #fffffe;
   text-align: center;    /* Change to 'left' if you want flush-left labels */
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .gallery2,
+  .gallery3 {
+    padding: 1rem 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .split-section {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1.25rem;
+  }
+
+  .split-text {
+    padding-left: 0;
+  }
+  .split-image img {
+    padding-right: 0;
+  }
+
+  p.small,
+  p.smaller {
+    padding-left: 1.25rem;
+    max-width: 100%;
+  }
+
+  /* Stack the 3-column gallery3 into 1 column */
+  .gallery3 {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery3 div:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+    .gallery2 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+  }
+
+  .gallery2 div:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Stack top navigation links if they get crowded */
+  .top-bar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Stack all grids into 1 full-width column */
+  .grid-container,
+  .gallery2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Thinner white photo borders on small screens */
+  .gallery2 img,
+  .gallery2 video {
+    border-width: 8px;
+  }
+
+  .back-btn {
+    top: 1rem;
+    left: 1rem;
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+
+  #close-lightbox {
+    top: 0.75rem;
+    right: 1rem;
+  }
+
+  #close-lightbox img {
+    width: 44px;
+    height: 44px;
+  }
+   #photo-lightbox[open]:has(.lightbox-stage) {
+    gap: 0.25rem;
+  }
+
+  .nav-arrow {
+    font-size: 1.5rem;
+    padding: 0.25rem;
+  }
+
+  #lightbox-img,
+  #lightbox-video {
+    max-width: 82vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-bar {
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+    padding: 10px 1rem;
+  }
+
+  .top-bar h2 {
+    font-size: 26px;
+    margin: 0;
+  }
+
+  .top-bar h3 {
+    padding-top: 0;
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .gallery2 {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    gap: 1.25rem 0.75rem;
+    padding: 1rem 1rem 3rem;
+  }
+
+  /* Slightly thinner white frame on smaller screens */
+  .gallery2 img,
+  .gallery2 video {
+    border-width: 6px;
+  }
+  .gallery2 div:nth-child(2)  { grid-column: 2 / 4; grid-row: 1; }
+  .gallery2 div:nth-child(1)  { grid-column: 1 / 3; grid-row: 2; }
+  .gallery2 div:nth-child(3)  { grid-column: 3 / 5; grid-row: 2; }
+  .gallery2 div:nth-child(4)  { grid-column: 1 / 4; grid-row: 3; }
+  .gallery2 div:nth-child(5)  { grid-column: 3 / 5; grid-row: 4; }
+  .gallery2 div:nth-child(6)  { grid-column: 1 / 3; grid-row: 5; }
+  .gallery2 div:nth-child(7)  { grid-column: 2 / 5; grid-row: 6; }
+  .gallery2 div:nth-child(9)  { grid-column: 3 / 5; grid-row: 7; }
+  .gallery2 div:nth-child(8)  { grid-column: 1 / 4; grid-row: 8; } /* Wide geese triptych */
+  .gallery2 div:nth-child(10) { grid-column: 2 / 4; grid-row: 9; }
+  .gallery2 div:nth-child(11) { grid-column: 1 / 3; grid-row: 10; }
+  .gallery2 div:nth-child(12) { grid-column: 3 / 5; grid-row: 10; }
+  .gallery2 div:nth-child(14) { grid-column: 3 / 5; grid-row: 11; }
+  .gallery2 div:nth-child(13) { grid-column: 1 / 4; grid-row: 12; }
+  .gallery2 div:nth-child(15) { grid-column: 2 / 5; grid-row: 13; }
+  .gallery2 div:nth-child(16) { grid-column: 2 / 5; grid-row: 14; }
+  .gallery2 div:nth-child(18) { grid-column: 1 / 3; grid-row: 15; }
+  .gallery2 div:nth-child(17) { grid-column: 2 / 5; grid-row: 16; }
+  .gallery2 div:nth-child(19) { grid-column: 3 / 5; grid-row: 17; }
+  .gallery2 div:nth-child(20) { grid-column: 1 / 4; grid-row: 18; }
+  .gallery2 div:nth-child(22) { grid-column: 1 / 3; grid-row: 19; }
+  .gallery2 div:nth-child(21) { grid-column: 2 / 5; grid-row: 20; }
+
+    #close-lightbox {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  #close-lightbox img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Stagger the 3 photo albums on a 4-column mobile grid to match Works */
+  .gallery3 {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    gap: 2rem 0.75rem;
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  /* Album 1: Left-aligned, spans 3 columns */
+  .gallery3 div:nth-child(1) {
+    grid-column: 1 / 4;
+    grid-row: 1;
+  }
+  .gallery3 div:nth-child(2) {
+    grid-column: 2 / 5;
+    grid-row: 2;
+  }
+
+  /* Album 3: Centered, spans 3 columns */
+  .gallery3 div:nth-child(3) {
+    grid-column: 1 / 4;
+    grid-row: 3;
+  }
+  .group-caption {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  /* Prevent lightbox arrows from squishing the slideshow image on phones */
+  #photo-lightbox[open]:has(.lightbox-stage) {
+    gap: 0.25rem;
+    padding: 0 0.25rem;
+    box-sizing: border-box;
+  }
+
+  .nav-arrow {
+    font-size: 1.5rem;
+    padding: 0.5rem 0.35rem;
+  }
+
+    #lightbox-img {
+    max-width: 80vw;
+    max-height: 75vh;
+  }
+}
+
+.cv-container {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 0 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 3rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.cv-block h4 {
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.04em;
+}
+.cv-block p,
+.cv-bio p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+.cv-bio {
+  grid-column: 1 / -1;
+  max-width: 68ch;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 4px solid rgba(255, 19, 149, 0.25);
+}
+
+@media (max-width: 768px) {
+  .split-section {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    padding: 0 1rem;
+  }
+
+  .split-text {
+    grid-column: 1 / 5;
+  }
+
+  .split-image {
+    grid-column: 2 / 5; 
+  }
+  .split-image img {
+    border-width: 6px;
+  }
+
+  .cv-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem 3rem;
+  }
+}
+
+body.home-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Fill the remaining space below the top-bar and center the photo */
+.home-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.home-center img {
+  max-width: 70vw;
+  max-height: 55vh;
+  width: auto;
+  height: auto;
+  display: block;
+  box-sizing: border-box;
+  transition: transform 0.2s ease;
 }
